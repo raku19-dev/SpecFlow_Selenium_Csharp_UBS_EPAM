@@ -17,14 +17,9 @@ namespace SpecFlow_Csharp_EPAM.PageObjects
             _driver = driver;
         }
 
-        public void clickLinkMenu(String menuLink)
+        public void clickMenuItem(String menuLink, String subMenuLink)
         {
-            
             _driver.FindElement(By.LinkText(menuLink)).Click();
-        }
-
-        public void clickSubMenuItem(String menuLink, String subMenuLink)
-        {
             Actions actions = new Actions(_driver);
             IWebElement menuHoverLink = _driver.FindElement(By.LinkText(menuLink));
             actions.MoveToElement(menuHoverLink).Perform();

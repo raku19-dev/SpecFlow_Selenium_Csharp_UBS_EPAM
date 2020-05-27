@@ -12,7 +12,6 @@ namespace SpecFlow_Csharp_EPAM.StepsDefinitions
         private readonly HomePage _homePage;
         private readonly JobBoard _jobBoard;
         private readonly SearchJobs _searchJobs;
-        private String link;
 
         public StepsDefinitions(IWebDriver driver)
         {
@@ -29,18 +28,13 @@ namespace SpecFlow_Csharp_EPAM.StepsDefinitions
         }
 
         [When(@"I click ""(.*)""")]
-        public void WhenIClick(string menuLink)
+        public void WhenIClick(string menu)
         {
-            this.link = menuLink;
-            _homePage.clickLinkMenu(menuLink);
+            String[] strlink = menu.Split("/");
+            _homePage.clickMenuItem(strlink[0],strlink[1]);
         }
 
 
-        [When(@"I click subitem ""(.*)""")]
-        public void WhenIClickSubItem(string subMenu)
-        {
-             _homePage.clickSubMenuItem(this.link, subMenu);
-        }
         [When(@"I open Professionals for EMEA")]
         public void WhenIOpenProfessionalsForEMEA()
         {
