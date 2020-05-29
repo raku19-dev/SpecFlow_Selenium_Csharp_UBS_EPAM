@@ -74,18 +74,18 @@ namespace SpecFlow_Csharp_EPAM.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check total number of EMEA Proffesionals job positions")]
-        [NUnit.Framework.CategoryAttribute("C001")]
+        [NUnit.Framework.DescriptionAttribute("Check number of EMEA Proffesionals job positions in Wroclaw")]
+        [NUnit.Framework.CategoryAttribute("C002")]
         [NUnit.Framework.CategoryAttribute("smokeTest")]
-        public virtual void CheckTotalNumberOfEMEAProffesionalsJobPositions()
+        public virtual void CheckNumberOfEMEAProffesionalsJobPositionsInWroclaw()
         {
             string[] tagsOfScenario = new string[] {
-                    "C001",
+                    "C002",
                     "smokeTest"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check total number of EMEA Proffesionals job positions", null, new string[] {
-                        "C001",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check number of EMEA Proffesionals job positions in Wroclaw", null, new string[] {
+                        "C002",
                         "smokeTest"});
-#line 5
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -105,17 +105,23 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 8
  testRunner.Given("I am on \"https://www.ubs.com/global/en.html\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
+#line 9
  testRunner.When("I click \"Careers/Search jobs\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 8
+#line 10
  testRunner.And("I open Professionals for EMEA", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 9
- testRunner.Then("there are 276 open positions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 11
+ testRunner.And("new tab is open", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 12
+ testRunner.And("I check City \"Wroclaw\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 13
+ testRunner.Then("there are 40 open positions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

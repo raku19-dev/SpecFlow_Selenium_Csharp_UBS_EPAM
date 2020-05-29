@@ -40,9 +40,35 @@ namespace SpecFlow_Csharp_EPAM.StepsDefinitions
         {
             _jobBoard.clickLinkForEMEA("Professionals");
         }
-        
+
+        [When(@"new tab is open")]
+        public void WhenNewTabIsOpen()
+        {
+            _searchJobs.switchToNewTab();
+        }
+
+
+        [When(@"I apply for EME Proffessional job position ""(.*)""")]
+        public void WhenIApplyForEMEProffessionalJobPosition(string positionName)
+        {
+            //ScenarioContext.Current.Pending();
+        }
+
+        [When(@"I check City ""(.*)""")]
+        public void WhenICheckCity(string city)
+        {
+            _searchJobs.expandCitySelection();
+            _searchJobs.checkSpecificCity(city);
+        }
+
         [Then(@"there are (.*) open positions")]
-        public void ThenThereAreOpenPositions(int p0)
+        public void ThenThereAreOpenPositions(int results)
+        {
+            _searchJobs.AssertNumberOfResults(results+" results");
+        }
+
+        [Then(@"user starts filling in the application form")]
+        public void ThenUserStartsFillingInTheApplicationForm()
         {
             //ScenarioContext.Current.Pending();
         }

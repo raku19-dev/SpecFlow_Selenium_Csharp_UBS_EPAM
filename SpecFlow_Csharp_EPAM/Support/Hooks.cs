@@ -25,12 +25,11 @@ namespace SpecFlow_Csharp_EPAM.Support
 			_driverFactory = new DriverFactory();
 		}
 
-		[BeforeScenario(Order = 0)]
+		[BeforeScenario]
 		public void BeforeScenario()
 		{
 			_driver = _driverFactory.CreateDriver(); ;
-			//_driver = new ChromeDriver("C:\\Selenium\\");
-			_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+			//_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 			_driver.Manage().Window.Maximize();
 			_objectContainer.RegisterInstanceAs(_driver);
 		}
@@ -45,11 +44,10 @@ namespace SpecFlow_Csharp_EPAM.Support
 		//	_driver?.Dispose();
 		//}
 
-		[TearDown]
+		[AfterScenario]
 		public void TearDown()
 		{
-			_driver.Quit();
-			_driver.Dispose();
+			//_driver.Dispose();
 		}
 	}
 }

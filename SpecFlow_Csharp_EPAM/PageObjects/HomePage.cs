@@ -35,8 +35,9 @@ namespace SpecFlow_Csharp_EPAM.PageObjects
         {
             WebDriverWait _driverWait =  new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
             _driver.SwitchTo().Frame(0);
-            IWebElement handleCookie = _driverWait.Until(ExpectedConditions.ElementExists(By.XPath("//span[contains(@class, 'actionbutton__txt')]")));
-            handleCookie.Click();
+            //IWebElement handleCookie = _driverWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(0));
+            IWebElement handleCookieButton = _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[contains(@class, 'actionbutton__txt')]")));
+            handleCookieButton.Click();
             _driver.SwitchTo().ParentFrame();
         }
     }

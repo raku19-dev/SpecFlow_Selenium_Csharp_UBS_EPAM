@@ -20,7 +20,7 @@ namespace SpecFlow_Csharp_EPAM.PageObjects
         public void AssertTitle(string title)
         {
             string pageTitle = _driver.Title;
-            StringAssert.Equals(pageTitle, title);
+            Assert.Equals(title, pageTitle);//(expected, actual)
         }
     }
 }
