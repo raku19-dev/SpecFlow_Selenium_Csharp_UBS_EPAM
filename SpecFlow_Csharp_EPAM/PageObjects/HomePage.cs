@@ -34,9 +34,9 @@ namespace SpecFlow_Csharp_EPAM.PageObjects
         public void handlePrivacySettings()
         {
             WebDriverWait _driverWait =  new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            //_driverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.Id("doc")));
             _driver.SwitchTo().Frame(0);
-            //IWebElement handleCookie = _driverWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(0));
-            IWebElement handleCookieButton = _driverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[contains(@class, 'actionbutton__txt')]")));
+            IWebElement handleCookieButton = _driverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//span[contains(@class, 'actionbutton__txt')]")));
             handleCookieButton.Click();
             _driver.SwitchTo().ParentFrame();
         }

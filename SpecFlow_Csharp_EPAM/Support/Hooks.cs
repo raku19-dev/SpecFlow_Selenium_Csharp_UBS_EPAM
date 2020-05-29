@@ -29,7 +29,6 @@ namespace SpecFlow_Csharp_EPAM.Support
 		public void BeforeScenario()
 		{
 			_driver = _driverFactory.CreateDriver(); ;
-			//_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 			_driver.Manage().Window.Maximize();
 			_objectContainer.RegisterInstanceAs(_driver);
 		}
@@ -47,7 +46,7 @@ namespace SpecFlow_Csharp_EPAM.Support
 		[AfterScenario]
 		public void TearDown()
 		{
-			//_driver.Dispose();
+			_driver.Dispose();
 		}
 	}
 }

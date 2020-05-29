@@ -17,9 +17,6 @@ namespace SpecFlow_Csharp_EPAM.PageObjects
 
         public void clickLinkForEMEA(string jobType)
         {
-            //Actions actions = new Actions(_driver);
-            // actions.MoveToElement(_EMEAWebElement);
-            //actions.Perform();
             IWebElement _EMEAWebElement = _driver.FindElement(By.XPath("//span[contains(text(),'Middle East, Africa (excl. Switzerland)')]/../../div//a[contains(text(),'" + jobType + "')]"));
             _EMEAWebElement.Click();
         }

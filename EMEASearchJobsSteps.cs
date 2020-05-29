@@ -12,17 +12,21 @@ namespace SpecFlow_Csharp_EPAM.StepsDefinitions
         private readonly HomePage _homePage;
         private readonly JobBoard _jobBoard;
         private readonly SearchJobs _searchJobs;
+        private readonly SignInPopup _signIn;
+        private readonly ApplicationForm _appForm;
 
         public StepsDefinitions(IWebDriver driver)
         {
             _homePage = new HomePage(driver);
             _jobBoard = new JobBoard(driver);
             _searchJobs = new SearchJobs(driver);
+            _signIn = new SignInPopup(driver);
+            _appForm = new ApplicationForm(driver);
         }
 
         [Given(@"I am on ""(.*)""")]
         public void GivenIAmOn(string url)
-        {
+        { 
             _homePage.Navigate(url);
             _homePage.handlePrivacySettings();
         }
@@ -48,11 +52,18 @@ namespace SpecFlow_Csharp_EPAM.StepsDefinitions
         }
 
 
-        [When(@"I apply for EME Proffessional job position ""(.*)""")]
+        [When(@"I select EMEA Proffessional job position ""(.*)""")]
         public void WhenIApplyForEMEProffessionalJobPosition(string positionName)
         {
-            //ScenarioContext.Current.Pending();
+            _searchJobs.selectFirstJobOfferThatMatchesPositionName(positionName);
         }
+
+        [When(@"I click Apply now")]
+        public void WhenIClickApplyNow()
+        {
+            _searchJobs.clickApplyNow();
+        }
+
 
         [When(@"I check City ""(.*)""")]
         public void WhenICheckCity(string city)
@@ -61,16 +72,37 @@ namespace SpecFlow_Csharp_EPAM.StepsDefinitions
             _searchJobs.checkSpecificCity(city);
         }
 
+        [When(@"I check Job Type ""(.*)""")]
+        public void WhenICheckJobType(string jobType)
+        {
+            _searchJobs.checkSpecificJobType(jobType);
+        }
+
+        [When(@"I check Function Category ""(.*)""")]
+        public void WhenICheckFunctionCategory(string functionCategory)
+        {
+            _searchJobs.expandFunctionCategory();
+            _searchJobs.checkSpecificFunctionCategory(functionCategory);
+        }
+
+
+        [When(@"user sign in with login and password")]
+        public void WhenUserMustSignIn()
+        {
+            _signIn.Login();
+        }
+
         [Then(@"there are (.*) open positions")]
         public void ThenThereAreOpenPositions(int results)
         {
             _searchJobs.AssertNumberOfResults(results+" results");
         }
 
-        [Then(@"user starts filling in the application form")]
-        public void ThenUserStartsFillingInTheApplicationForm()
+        [Then(@"user can see ""(.*)""")]
+        public void ThenUserCanSee(string startUpText)
         {
-            //ScenarioContext.Current.Pending();
+            _appForm.applicationIsStarted(startUpText);
         }
+
     }
 }
