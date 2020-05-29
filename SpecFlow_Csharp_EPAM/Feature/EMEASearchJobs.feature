@@ -1,5 +1,5 @@
 ﻿Feature: EMEASearchJobs
-this feature is to test search of EMEA Professional job positions
+this feature is to check different search options on EMEA Professional job search page
 
 @C001 @smokeTest
 Scenario: Check total number of EMEA Proffesionals job positions
